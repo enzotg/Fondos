@@ -5,9 +5,14 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="CqPersona\Queries\**" />
+    <EmbeddedResource Remove="CqPersona\Queries\**" />
+    <None Remove="CqPersona\Queries\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Folder Include="CqMovimiento\Commands\" />
     <Folder Include="CqMovimiento\Queries\" />
-    <Folder Include="CqPersona\Queries\" />
     <Folder Include="CqCuenta\Queries\" />
     <Folder Include="Services\" />
   </ItemGroup>

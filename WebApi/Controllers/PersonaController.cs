@@ -44,15 +44,18 @@ namespace WebApi.Controllers
 
         // PUT api/<PersonaController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public async Task<IActionResult> Put([FromBody] UpdatePersonaCommandRequest request)
         {
-            
+            var response = await _mediator.Send(request);
+            return Ok(response);
         }
 
         // DELETE api/<PersonaController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public async Task<IActionResult> Delete([FromBody] DeletePersonaCommandRequest request)
         {
+            var response = await _mediator.Send(request);
+            return Ok(response);
         }
     }
 }

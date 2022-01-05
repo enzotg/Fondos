@@ -2,7 +2,7 @@
 
 namespace Application.CqPersona.Commands
 {
-    public class UpdatePersonaCommandRequest:IRequest<UpdatePersonaCommandResponse>
+    public class ModificarPersonaCommandRequest:IRequest<ModificarPersonaCommandResponse>
     {
         public long Id { get;  set; }
 

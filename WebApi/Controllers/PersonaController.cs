@@ -36,7 +36,7 @@ namespace WebApi.Controllers
 
         // POST api/<PersonaController>
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] CreatePersonaCommandRequest request)
+        public async Task<IActionResult> Post([FromBody] CrearPersonaCommandRequest request)
         {
             var response = await _mediator.Send(request);
             return Ok(response);
@@ -44,7 +44,7 @@ namespace WebApi.Controllers
 
         // PUT api/<PersonaController>/5
         [HttpPut("{id}")]
-        public async Task<IActionResult> Put([FromBody] UpdatePersonaCommandRequest request)
+        public async Task<IActionResult> Put([FromBody] ModificarPersonaCommandRequest request)
         {
             var response = await _mediator.Send(request);
             return Ok(response);
@@ -52,7 +52,7 @@ namespace WebApi.Controllers
 
         // DELETE api/<PersonaController>/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> Delete([FromBody] DeletePersonaCommandRequest request)
+        public async Task<IActionResult> Delete([FromBody] BorrarPersonaCommandRequest request)
         {
             var response = await _mediator.Send(request);
             return Ok(response);

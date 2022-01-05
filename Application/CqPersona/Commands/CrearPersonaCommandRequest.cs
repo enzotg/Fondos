@@ -8,7 +8,7 @@ using MediatR;
 
 namespace Application.CqPersona.Commands
 {
-    public class CreatePersonaCommandRequest:IRequest<long>
+    public class CrearPersonaCommandRequest:IRequest<long>
     {
         public long Id { get; set; }
 

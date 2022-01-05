@@ -10,32 +10,27 @@ using Infrastructure.Interfaces;
 using MediatR;
 namespace Application.CqPersona.Commands
 {
-    public class DeletePersonaCommandHandler:IRequestHandler<DeletePersonaCommandRequest,DeletePersonaCommandResponse>
+    public class BorrarPersonaCommandHandler:IRequestHandler<BorrarPersonaCommandRequest,long>
     {
         private IGenericRepositoryAsync<Persona> _repo;
 
-        public DeletePersonaCommandHandler(IGenericRepositoryAsync<Persona> Repo)
+        public BorrarPersonaCommandHandler(IGenericRepositoryAsync<Persona> Repo)
         {            
             _repo = Repo;
         }
 
-        public async Task<DeletePersonaCommandResponse> Handle(DeletePersonaCommandRequest request, CancellationToken cancellationToken)
+        public async Task<long> Handle(BorrarPersonaCommandRequest request, CancellationToken cancellationToken)
         {
             var reg = await _repo.GetByIdAsync(request.Id);
             if (reg == null)
                 throw new Exception("No existe registro con id " + request.Id.ToString());
-
-            //var modif = reg.de
-
+            
             await _repo.DeleteAsync(reg);
-
-            var result = new DeletePersonaCommandResponse();
-            result.Id = reg.Id;
-
-            return result;
+            
+            return reg.Id;
         }
 
-        public void Validate(DeletePersonaCommandRequest request)
+        public void Validate(BorrarPersonaCommandRequest request)
         {
             if (request.Id == 0)
                 throw new Exception("Cuenta ident. no puede ser cero. " );

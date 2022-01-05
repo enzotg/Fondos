@@ -11,9 +11,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="CqMovimiento\Commands\" />
-    <Folder Include="CqMovimiento\Queries\" />
-    <Folder Include="CqCuenta\Queries\" />
     <Folder Include="Services\" />
   </ItemGroup>
 

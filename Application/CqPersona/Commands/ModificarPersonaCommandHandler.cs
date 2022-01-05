@@ -8,16 +8,16 @@ using System.Threading.Tasks;
 
 namespace Application.CqPersona.Commands
 {
-    public class UpdatePersonaCommandHandler:IRequestHandler<UpdatePersonaCommandRequest, UpdatePersonaCommandResponse>
+    public class ModificarPersonaCommandHandler:IRequestHandler<ModificarPersonaCommandRequest, ModificarPersonaCommandResponse>
     {
         private IGenericRepositoryAsync<Persona> _repo;
 
-        public UpdatePersonaCommandHandler(IGenericRepositoryAsync<Persona> Repo)
+        public ModificarPersonaCommandHandler(IGenericRepositoryAsync<Persona> Repo)
         {
             _repo = Repo;
         }
 
-        public async Task<UpdatePersonaCommandResponse> Handle(UpdatePersonaCommandRequest request, CancellationToken cancellationToken)
+        public async Task<ModificarPersonaCommandResponse> Handle(ModificarPersonaCommandRequest request, CancellationToken cancellationToken)
         {
             var reg = await _repo.GetByIdAsync(request.Id);
             if(reg == null)
@@ -27,7 +27,7 @@ namespace Application.CqPersona.Commands
 
             await _repo.UpdateAsync(modif);
 
-            var res = new UpdatePersonaCommandResponse
+            var res = new ModificarPersonaCommandResponse
             {
                 ApNombre = modif.ApNombre,
                 Cuil = modif.Cuil,

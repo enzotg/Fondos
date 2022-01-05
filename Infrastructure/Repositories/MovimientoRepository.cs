@@ -36,14 +36,24 @@ namespace Infrastructure.Repositories
             return res;
         }
 
-        public async Task<List<Movimiento>> GetMovimientos(long CuentaId, DateTime FechaDesde)
+        public async Task<List<Movimiento>> GetMovimientos(long CuentaId)
         {            
             var regs = await _dbContext.Movimiento
                 .Include(x => x.Operacion)
-                .Where(x => x.CuentaId == CuentaId && x.FechaOp.Date >= FechaDesde)
+                .Where(x => x.CuentaId == CuentaId )
                 .OrderBy(x=>x.FechaOp).ThenBy(x => x.FechaGrab)
                 .ToListAsync();
                         
+            return regs;
+        }
+        public async Task<List<Movimiento>> GetMovimientos(long CuentaId, DateTime FechaDesde)
+        {
+            var regs = await _dbContext.Movimiento
+                .Include(x => x.Operacion)
+                .Where(x => x.CuentaId == CuentaId && x.FechaOp.Date >= FechaDesde)
+                .OrderBy(x => x.FechaOp).ThenBy(x => x.FechaGrab)
+                .ToListAsync();
+
             return regs;
         }
 

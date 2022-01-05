@@ -11,20 +11,20 @@ using MediatR;
 
 namespace Application.CqMovimiento.Commands
 {
-    public class CreateMovimientoCommandHandler:IRequestHandler<CreateMovimientoCommandRequest,long>
+    public class NuevoMovimientoCommandHandler:IRequestHandler<NuevoMovimientoCommandRequest,long>
     {
         private IMovimientoRepository _movimientoRepository;
         private ICuentaRepository _cuentaRepository;
         private IGenericRepositoryAsync<Operacion> _operacionRepository;
 
-        public CreateMovimientoCommandHandler(IMovimientoRepository movimientoRepository, ICuentaRepository cuentaRepository, IGenericRepositoryAsync<Operacion> operacionRepository)
+        public NuevoMovimientoCommandHandler(IMovimientoRepository movimientoRepository, ICuentaRepository cuentaRepository, IGenericRepositoryAsync<Operacion> operacionRepository)
         {
             _movimientoRepository = movimientoRepository;
             _cuentaRepository = cuentaRepository;
             _operacionRepository = operacionRepository;
         }
 
-        public async Task<long> Handle(CreateMovimientoCommandRequest request, CancellationToken cancellationToken)
+        public async Task<long> Handle(NuevoMovimientoCommandRequest request, CancellationToken cancellationToken)
         {
             long NumeroOp = await _movimientoRepository.GetNuevoNumeroOp(request.SucursalIdMov, DateTime.Now);
             Operacion Op = await _operacionRepository.GetByIdAsync(request.OperacionId);
@@ -48,7 +48,7 @@ namespace Application.CqMovimiento.Commands
             return nuevo.Id;
         }
 
-        public void Validate(CreateMovimientoCommandRequest request)
+        public void Validate(NuevoMovimientoCommandRequest request)
         {
             if (request.CuentaId == 0)
                 throw new Exception("Cuenta ident. no puede ser cero. " + request.CuentaId.ToString());

@@ -1,6 +1,6 @@
 ﻿namespace Application.CqCuenta.Commands
 {
-    public class UpdateCuentaCommandResponse
+    public class ModificarCuentaCommandResponse
     {
         public long CuentaId { get; set; }
 

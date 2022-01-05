@@ -10,16 +10,16 @@ using MediatR;
 
 namespace Application.CqCuenta.Commands
 {
-    public class CreateCuentaCommandHandler: IRequestHandler<CreateCuentaCommandRequest, long>
+    public class CrearCuentaCommandHandler: IRequestHandler<CrearCuentaCommandRequest, long>
     {
         private ICuentaRepository _repo;
 
-        public CreateCuentaCommandHandler(ICuentaRepository Repo)
+        public CrearCuentaCommandHandler(ICuentaRepository Repo)
         {
             _repo = Repo;
         }
 
-        public async Task<long> Handle(CreateCuentaCommandRequest request, CancellationToken cancellationToken)
+        public async Task<long> Handle(CrearCuentaCommandRequest request, CancellationToken cancellationToken)
         {            
            var nuevo = new Cuenta(request.CasaId, await _repo.GetUltNumeroAsync(request.CasaId) , request.TipoCuentaId, request.Integrantes);
            var cp = new List<CuentaPersona>();

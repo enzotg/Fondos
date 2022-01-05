@@ -5,7 +5,7 @@ using MediatR;
 
 namespace Application.CqMovimiento.Commands
 {
-    public class CreateMovimientoCommandRequest:IRequest<long>
+    public class NuevoMovimientoCommandRequest:IRequest<long>
     {
         public long CuentaId { get; set; }
 

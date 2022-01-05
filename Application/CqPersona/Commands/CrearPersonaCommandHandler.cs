@@ -10,16 +10,16 @@ using Infrastructure.Interfaces;
 using MediatR;
 namespace Application.CqPersona.Commands
 {
-    public class CreatePersonaCommandHandler:IRequestHandler<CreatePersonaCommandRequest,long>
+    public class CrearPersonaCommandHandler:IRequestHandler<CrearPersonaCommandRequest,long>
     {
         private IGenericRepositoryAsync<Persona> _repo;
 
-        public CreatePersonaCommandHandler(IGenericRepositoryAsync<Persona> Repo)
+        public CrearPersonaCommandHandler(IGenericRepositoryAsync<Persona> Repo)
         {            
             _repo = Repo;
         }
 
-        public async Task<long> Handle(CreatePersonaCommandRequest request, CancellationToken cancellationToken)
+        public async Task<long> Handle(CrearPersonaCommandRequest request, CancellationToken cancellationToken)
         {
             var p = new Persona(request.Documento, request.Cuil, request.ApNombre, request.TipoDocumentoId);
 

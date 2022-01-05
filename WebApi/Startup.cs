@@ -51,6 +51,10 @@ namespace WebApi
             services.AddTransient<IPersonaRepository, PersonaRepository>();
             services.AddTransient<IGenericRepositoryAsync<Persona>, GenericRepositoryAsync<Persona>>();
             services.AddTransient<IGenericRepositoryAsync<Operacion>, GenericRepositoryAsync<Operacion>>();
+
+            services.AddTransient<Application.CqMovimiento.Queries.IMovimientoQueries, Application.CqMovimiento.Queries.MovimientoQueries>();
+            services.AddTransient<Application.CqCuenta.Queries.ICuentaQueries, Application.CqCuenta.Queries.CuentaQueries>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

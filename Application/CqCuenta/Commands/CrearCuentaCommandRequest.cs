@@ -6,17 +6,19 @@ using System.Text;
 
 namespace Application.CqCuenta.Commands
 {
-    public class UpdateCuentaCommandRequest:IRequest<UpdateCuentaCommandResponse>
+    public class CrearCuentaCommandRequest:IRequest<long>
     {
-        public long CuentaId { get; set; }
+        public long CasaId { get; set; }
+
+        //public long Numero { get; set; }        
 
         public long TipoCuentaId { get; set; }
 
         public List<long> Integrantes { get; set; }
 
-        public UpdateCuentaCommandRequest()
+        public CrearCuentaCommandRequest()
         {
-            Integrantes = new List<long>();
+            this.Integrantes = new List<long>();
         }
     }
 }

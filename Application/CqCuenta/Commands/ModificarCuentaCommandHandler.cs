@@ -10,25 +10,23 @@ using System.Linq;
 
 namespace Application.CqCuenta.Commands
 {
-    public class UpdateCuentaCommandHandler : IRequestHandler<UpdateCuentaCommandRequest, UpdateCuentaCommandResponse>
+    public class ModificarCuentaCommandHandler : IRequestHandler<ModificarCuentaCommandRequest, ModificarCuentaCommandResponse>
     {
         private ICuentaRepository _repo;
 
-        public UpdateCuentaCommandHandler(ICuentaRepository cuentaRepository)
+        public ModificarCuentaCommandHandler(ICuentaRepository cuentaRepository)
         {
             _repo = cuentaRepository;
 
         }
-        public async Task<UpdateCuentaCommandResponse> Handle(UpdateCuentaCommandRequest request, CancellationToken cancellationToken)
+        public async Task<ModificarCuentaCommandResponse> Handle(ModificarCuentaCommandRequest request, CancellationToken cancellationToken)
         {
-            UpdateCuentaCommandResponse res = new UpdateCuentaCommandResponse();
+            ModificarCuentaCommandResponse res = new ModificarCuentaCommandResponse();
             Validate(request);
 
             var reg = await _repo.GetByIdAsync(request.CuentaId);
             if (reg == null)
                 throw new Exception("No existe registro con id " + request.CuentaId.ToString());
-
-            //reg = await _repo.GetByIdAsync(request.CuentaId);
 
             var modif = reg.Modificar(request.TipoCuentaId, request.Integrantes);
 
@@ -40,7 +38,7 @@ namespace Application.CqCuenta.Commands
 
             return res;
         }
-        public void Validate(UpdateCuentaCommandRequest request)
+        public void Validate(ModificarCuentaCommandRequest request)
         {
             if(request.CuentaId==0)
                 throw new Exception("Cuenta ident. no puede ser cero. " + request.CuentaId.ToString());

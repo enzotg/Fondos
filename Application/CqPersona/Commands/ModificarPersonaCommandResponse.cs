@@ -1,6 +1,6 @@
 ﻿namespace Application.CqPersona.Commands
 {
-    public class UpdatePersonaCommandResponse
+    public class ModificarPersonaCommandResponse
     {
         public long Id { get; set; }
 

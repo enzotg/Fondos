@@ -8,10 +8,8 @@ using MediatR;
 
 namespace Application.CqPersona.Commands
 {
-    public class DeletePersonaCommandRequest:IRequest<DeletePersonaCommandResponse>
+    public class BorrarPersonaCommandRequest:IRequest<long>
     {
         public long Id { get; set; }
-
- 
     }
 }
